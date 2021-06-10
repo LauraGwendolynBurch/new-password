@@ -146,32 +146,30 @@ function speCharCall() {
     "Do you want special characters in your password?"
   );
   if (speCharOption === true) {
-    optionsPicked = optionsPicked.concat(speChar);
-    var randomspeChar = speChar[Math.floor(Math.random() * speChar.length)];
+    optionsPicked = optionsPicked.concat(specialCharacter);
+    var randomspeChar =
+      specialCharacter[Math.floor(Math.random() * specialCharacter.length)];
     strongPassword += randomspeChar;
+  }
+  numberCall();
+}
+
+function numberCall() {
+  var numberCharaters = confirm("Do you want numbers in your password?");
+  if (numberCharaters === true) {
+    optionsPicked = optionsPicked.concat(numbers);
+    var randomNumbers = numbers[Math.floor(Math.random() * numbers.length)];
+    strongPassword += randomNumbers;
   }
   pickSomething();
 }
 
-function speCharCall() {
-  var speCharOption = confirm(
-    "Do you want special characters in your password?"
-  );
-  if (speCharOption === true) {
-    optionsPicked = optionsPicked.concat(speChar);
-    var randomspeChar = speChar[Math.floor(Math.random() * speChar.length)];
-    strongPassword += randomspeChar;
+function pickSomething() {
+  if (!numbers && !uppercase && !lowercase && !specialCharacter) {
+    alert("You must choose at least one option.");
+    return;
   }
-  // pickSomething();
 }
-
-// function pickSomething() {
-//   if (!isUsingNumbers && !isUsingLowercaseLetters && !isUsingUppercaseLetters && !isUsingSpecialCharaters){
-//     alert("You must choose at least one option.");
-//     return;
-//   }
-
-// }
 
 function generatePassword() {
   passwordLengthCall();
