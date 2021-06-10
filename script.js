@@ -1,5 +1,98 @@
-// Assignment Code
+//DECLARE 'lowercaseLetters'
+//DECLARE 'uppercaseLetters'
+//DECLARE 'numbers'
+//DECLARE 'specialCharacters'
 var generateBtn = document.querySelector("#generate");
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var lowercase = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+var uppercase = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+var specialCharacter = [
+  "!",
+  "#",
+  "$",
+  "%",
+  "&",
+  "'",
+  "(",
+  ")",
+  "*",
+  "+",
+  "-",
+  ".",
+  "/",
+  ":",
+  ";",
+  "<",
+  "=",
+  ">",
+  "?",
+  "@",
+  "[",
+  "]",
+  "^",
+  "_",
+  "`",
+  "{",
+  "|",
+  "}",
+  "~",
+];
+var strongPassword = "";
+var optionsPicked = [];
 
 // Write password to the #password input
 function writePassword() {
@@ -9,7 +102,7 @@ function writePassword() {
   passwordText.value = password;
 }
 
-function generatePassword() {
+function passwordLengthCall() {
   var passwordLength = prompt("Select a password length between 8 and 128.");
   if (passwordLength < 8 || passwordLength > 128) {
     alert("You must choose a numer between 8 and 128");
@@ -19,6 +112,69 @@ function generatePassword() {
     alert("Please choose a number.");
     return;
   }
+  upperCaseCall();
+}
+
+function upperCaseCall() {
+  var upperCaseCharaters = confirm(
+    "Do you want uppercase letters in your password?"
+  );
+  if (upperCaseCharaters === true) {
+    optionsPicked = optionsPicked.concat(uppercase);
+    var randomUppercase =
+      uppercase[Math.floor(Math.random() * uppercase.length)];
+    strongPassword += randomUppercase;
+  }
+  lowerCaseCall();
+}
+
+function lowerCaseCall() {
+  var lowerCaseCharaters = confirm(
+    "Do you want lowercase letters in your password?"
+  );
+  if (lowerCaseCharaters === true) {
+    optionsPicked = optionsPicked.concat(lowercase);
+    var randomLowercase =
+      lowercase[Math.floor(Math.random() * lowercase.length)];
+    strongPassword += randomLowercase;
+  }
+  speCharCall();
+}
+
+function speCharCall() {
+  var speCharOption = confirm(
+    "Do you want special characters in your password?"
+  );
+  if (speCharOption === true) {
+    optionsPicked = optionsPicked.concat(speChar);
+    var randomspeChar = speChar[Math.floor(Math.random() * speChar.length)];
+    strongPassword += randomspeChar;
+  }
+  pickSomething();
+}
+
+function speCharCall() {
+  var speCharOption = confirm(
+    "Do you want special characters in your password?"
+  );
+  if (speCharOption === true) {
+    optionsPicked = optionsPicked.concat(speChar);
+    var randomspeChar = speChar[Math.floor(Math.random() * speChar.length)];
+    strongPassword += randomspeChar;
+  }
+  // pickSomething();
+}
+
+// function pickSomething() {
+//   if (!isUsingNumbers && !isUsingLowercaseLetters && !isUsingUppercaseLetters && !isUsingSpecialCharaters){
+//     alert("You must choose at least one option.");
+//     return;
+//   }
+
+// }
+
+function generatePassword() {
+  passwordLengthCall();
 }
 
 // Add event listener to generate button
